@@ -1,6 +1,7 @@
 import P from 'prop-types';
 import React from 'react';
 import SelectMultiple from 'react-select';
+import makeAnimated from 'react-select/animated';
 import { Controller } from 'react-hook-form';
 import { SelectInput } from './styled';
 
@@ -10,6 +11,7 @@ export const Multiselect = ({ label, name, values = [], control }) => {
     value: value,
   }));
 
+  const animatedComponents = makeAnimated();
   return (
     <SelectInput>
       <label>{label}</label>
@@ -19,6 +21,7 @@ export const Multiselect = ({ label, name, values = [], control }) => {
         render={({ field: { value, onChange, onBlur } }) => {
           return (
             <SelectMultiple
+              components={animatedComponents}
               options={options}
               placeholder={'Selecione...'}
               isMulti={true}
